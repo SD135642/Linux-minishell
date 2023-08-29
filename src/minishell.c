@@ -22,7 +22,7 @@ void catch_signal(int sig) {
   signal_val = sig;
 }
 
-void signal_check() {
+void signal_check(void) {
   struct sigaction action;
   memset(&action, 0, sizeof(struct sigaction));
   action.sa_handler = catch_signal;
@@ -131,7 +131,7 @@ void tokenize_strings(char *cwd, char *input, char **tokens) {
   while (input[i_index] != '\n') {
     if (input[i_index] == '"') {
       if (quote_seen == 'N') {
-        quote_seen == 'Y';
+        quote_seen = 'Y';
       } else {
         if (input[i_index+1] == '"') {
           i_index++;
@@ -156,7 +156,7 @@ void tokenize_strings(char *cwd, char *input, char **tokens) {
 }
 
 void change_directory(char *cwd, char *input, char **tokens) {
-  char *path;
+  char *path = NULL;
   char null_path = tokens[1][0];
   char real_path[PATH_MAX];
   struct stat path_stat;
