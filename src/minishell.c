@@ -156,9 +156,9 @@ void tokenize_strings(char *cwd, char *input, char **tokens) {
 }
 
 void change_directory(char *cwd, char *input, char **tokens) {
-  char *path = NULL;
+  char path[PATH_MAX] = { 0 };
   char null_path = tokens[1][0];
-  char real_path[PATH_MAX];
+  char real_path[PATH_MAX] = { 0 };
   struct stat path_stat;
 
   if (null_path == '~') {
@@ -174,7 +174,7 @@ void change_directory(char *cwd, char *input, char **tokens) {
     }
   }
   if (null_path == '\0' || strcmp(path, "~") == 0) {
-    path = getenv("HOME");
+    strncpy(path, getenv("HOME"), PATH_MAX -1);
   }
 
   if (realpath(path, real_path) == NULL) {
