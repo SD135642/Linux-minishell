@@ -31,3 +31,11 @@ Use this as you would use your regular command-line.
 ### Notes
 
     Use the command "exit" or signals to exit the shell
+
+### Author
+
+Aleksandra Dubrovina
+
+### Contact
+
+For inquiries or feedback, please contact aleks.dubrovina@gmail.com.
